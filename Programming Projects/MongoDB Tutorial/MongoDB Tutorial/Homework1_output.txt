@@ -1,0 +1,440 @@
+Andy Luong 1525166
+CIS 4339 Homework 1
+
+Exercise Part A
+1. Create a new database named employees using the use command. 
+Switched to db employees
+
+2. Use the db.adminCommand() command and report the output.
+{
+  databases: [
+    { name: 'CFCDatabase', sizeOnDisk: Long("73728"), empty: false },
+    { name: 'StudentRecords', sizeOnDisk: Long("40960"), empty: false },
+    { name: 'admin', sizeOnDisk: Long("40960"), empty: false },
+    { name: 'config', sizeOnDisk: Long("110592"), empty: false },
+    { name: 'employees', sizeOnDisk: Long("3989504"), empty: false },
+    { name: 'local', sizeOnDisk: Long("73728"), empty: false },
+    {
+      name: 'mongodbVSCodePlaygroundDB',
+      sizeOnDisk: Long("40960"),
+      empty: false
+    },
+    { name: 'test', sizeOnDisk: Long("40960"), empty: false }
+  ],
+  totalSize: Long("4411392"),
+  totalSizeMb: Long("4"),
+  ok: 1
+}
+
+Exercise Part B
+1. Create a database named temporary, add a collection named test to it, then drop the database. Report the output before and after dropping the database.
+switched to db temporary
+{ "ok" : 1 }
+{ "ok" : 1 }
+
+2. Create multiple collections using distinct department names in the database created in exercise Part A
+{ "ok" : 1 }
+{ "ok" : 1 }
+{ "ok" : 1 }
+
+3. List all the collections in the current database
+Finance
+IT
+Marketing
+
+Exercise Part C 
+1. Insert some employee documents with fields(employeeid, name, salary) in the multiple collections created in the previuos exercise.
+WriteResult({ "nInserted" : 1 })
+WriteResult({ "nInserted" : 1 })
+WriteResult({ "nInserted" : 1 })
+
+2. Use the find command to retrieve all the entered data.
+{ "_id" : ObjectId("61526190662b24dc0fe234b8"), "employeeid" : 56, "name" : "Spongebob Squarepants", "salary" : 70000 }
+{ "_id" : ObjectId("615261d6662b24dc0fe234b9"), "employeeid" : 57, "name" : "Patrick Star", "salary" : 60000 }
+{ "_id" : ObjectId("6152620c662b24dc0fe234ba"), "employeeid" : 58, "name" : "Sandy Cheeks", "salary" : 90000 }
+
+Exercise Part D  
+1. Add the follwoing employees to any collection:
+WriteResult({ "nInserted" : 1 })
+WriteResult({ "nInserted" : 1 })
+WriteResult({ "nInserted" : 1 })
+
+2. Find 2 documents using the field name employeeid
+{ "_id" : ObjectId("61526687662b24dc0fe234bb"), "employeeid" : 1187, "name" : "John Steight", "salary" : 75000 }
+{ "_id" : ObjectId("615266f7662b24dc0fe234bc"), "employeeid" : 2455, "name" : "Syed", "salary" : 90000 }
+
+3. Find 2 documents using the field name name
+{ "_id" : ObjectId("61526687662b24dc0fe234bb"), "employeeid" : 1187, "name" : "John Steight", "salary" : 75000 }
+{ "_id" : ObjectId("615266f7662b24dc0fe234bc"), "employeeid" : 2455, "name" : "Syed", "salary" : 90000 }
+
+4. Find all the documents where the name field starts with John
+{ "_id" : ObjectId("61526687662b24dc0fe234bb"), "employeeid" : 1187, "name" : "John Steight", "salary" : 75000 }
+
+5. Find all the documents where the name filed contains John
+{ "_id" : ObjectId("61526687662b24dc0fe234bb"), "employeeid" : 1187, "name" : "John Steight", "salary" : 75000 }
+{ "_id" : ObjectId("61526733662b24dc0fe234bd"), "employeeid" : 24113, "name" : "Wright John", "salary" : 65000 }
+
+Exercise Part E - Working with Real World Data
+1. Find all stocks with Average Volume less than 100
+  {
+    _id: ObjectId("52853801bb1177ca391c184a"),
+    Ticker: 'ACY',
+    'Profit Margin': 0.225,
+    'Institutional Ownership': 0.237,
+    'EPS growth past 5 years': 0.071,
+    'Total Debt/Equity': 1.37,
+    'Return on Assets': 0.051,
+    Sector: 'Services',
+    'P/S': 0.79,
+    'Change from Open': -0.0045,
+    'Performance (YTD)': 0.2711,
+    'Performance (Week)': -0.1164,
+    'P/B': 0.54,
+    'EPS growth quarter over quarter': -0.066,
+    'Payout Ratio': 0,
+    'Performance (Quarter)': -0.1467,
+    'Forward P/E': 7.92,
+    'P/E': 3.6,
+    '200-Day Simple Moving Average': -0.0924,
+    'Shares Outstanding': 1.54,
+    'Earnings Date': ISODate("2013-11-11T05:00:00.000Z"),
+    '52-Week High': -0.2063,
+    'P/Cash': 3.64,
+    Change: -0.0117,
+    'Analyst Recom': 2,
+    'Volatility (Week)': 0.0304,
+    Country: 'USA',
+    'Return on Equity': 0.166,
+    '50-Day Low': 0.0034,
+    Price: 17.7,
+    '50-Day High': -0.1567,
+    'Return on Investment': 0.046,
+    'Shares Float': 1.12,
+    Industry: 'Rental & Leasing Services',
+    Beta: 1.28,
+    'Sales growth quarter over quarter': -0.04,
+    'Operating Margin': 0.353,
+    'EPS (ttm)': 4.98,
+    'Float Short': 0.0012,
+    '52-Week Low': 0.4484,
+    'Average True Range': 0.36,
+    'EPS growth next year': -0.3152,
+    'Sales growth past 5 years': 0.042,
+    Company: 'AeroCentury Corp.',
+    Gap: -0.0073,
+    'Relative Volume': 0.6,
+    'Volatility (Month)': 0.0151,
+    'Market Cap': 27.64,
+    Volume: 2391,
+    'Short Ratio': 0.32,
+    'Performance (Half Year)': -0.1169,
+    'Relative Strength Index (14)': 18.11,
+    'Insider Ownership': 0.4574,
+    '20-Day Simple Moving Average': -0.1061,
+    'Performance (Month)': -0.0991,
+    'P/Free Cash Flow': 2.18,
+    'Institutional Transactions': 0.0027,
+    'Performance (Year)': 0.3517,
+    'LT Debt/Equity': 1.37,
+    'Average Volume': 4.34,
+    'EPS growth this year': 4.532,
+    '50-Day Simple Moving Average': -0.1228
+  },
+  {
+    _id: ObjectId("52853801bb1177ca391c1851"),
+    Ticker: 'ADHD',
+    'Institutional Ownership': 0.142,
+    'Total Debt/Equity': 0,
+    'Current Ratio': 72.3,
+    'Return on Assets': -0.498,
+    Sector: 'Healthcare',
+    'Change from Open': 0.0205,
+    'Performance (YTD)': 1.1219,
+    'Performance (Week)': -0.0675,
+    'Quick Ratio': 72.3,
+    'P/B': 6.76,
+    'Performance (Quarter)': 0.1476,
+    '200-Day Simple Moving Average': 0.2588,
+    'Shares Outstanding': 9.02,
+    '52-Week High': -0.3921,
+    'P/Cash': 6.69,
+    Change: 0.0231,
+    'Volatility (Week)': 0.0484,
+    Country: 'Israel',
+    'Return on Equity': -0.505,
+    '50-Day Low': 0.2805,
+    Price: 16.39,
+    '50-Day High': -0.3921,
+    'Shares Float': 16.84,
+    Industry: 'Biotechnology',
+    'EPS (ttm)': -0.33,
+    'Float Short': 0.0014,
+    '52-Week Low': 1.5215,
+    'Average True Range': 1.56,
+    Company: 'Alcobra Ltd.',
+    Gap: 0.0025,
+    'Relative Volume': 0.39,
+    'Volatility (Month)': 0.0848,
+    'Market Cap': 144.45,
+    Volume: 22113,
+    'Short Ratio': 0.39,
+    'Relative Strength Index (14)': 46.32,
+    '20-Day Simple Moving Average': -0.0329,
+    'Performance (Month)': -0.201,
+    'Institutional Transactions': 0.0756,
+    'LT Debt/Equity': 0,
+    'Average Volume': 61.88,
+    'EPS growth this year': 0.6,
+    '50-Day Simple Moving Average': -0.0729
+  }
+Type "it" for more
+
+2. Find stock where Ticker = 'ABFS' using query operator
+[  
+  {
+    _id: ObjectId("52853800bb1177ca391c1817"),
+    Ticker: 'ABFS',
+    'Profit Margin': -0.005,
+    'Institutional Ownership': 0.921,
+    'EPS growth past 5 years': -0.164,
+    'Total Debt/Equity': 0.31,
+    'Current Ratio': 1.3,
+    'Return on Assets': -0.01,
+    Sector: 'Services',
+    'P/S': 0.37,
+    'Change from Open': -0.006,
+    'Performance (YTD)': 2.3474,
+    'Performance (Week)': 0.1949,
+    'Quick Ratio': 1.3,
+    'Insider Transactions': 0.1293,
+    'P/B': 1.69,
+    'EPS growth quarter over quarter': -0.591,
+    'Performance (Quarter)': 0.3813,
+    'Forward P/E': 18.66,
+    '200-Day Simple Moving Average': 0.6449,
+    'Shares Outstanding': 25.69,
+    'Earnings Date': ISODate("2013-11-11T13:30:00.000Z"),
+    '52-Week High': -0.0166,
+    'P/Cash': 6.87,
+    Change: -0.0082,
+    'Analyst Recom': 2.8,
+    'Volatility (Week)': 0.0625,
+    Country: 'USA',
+    'Return on Equity': -0.022,
+    '50-Day Low': 0.474,
+    Price: 31.44,
+    '50-Day High': -0.0166,
+    'Return on Investment': -0.008,
+    'Shares Float': 24.3,
+    'Dividend Yield': 0.0038,
+    'EPS growth next 5 years': 0.1,
+    Industry: 'Trucking',
+    Beta: 1.91,
+    'Sales growth quarter over quarter': 0.13,
+    'Operating Margin': -0.006,
+    'EPS (ttm)': -0.4,
+    'Float Short': 0.1176,
+    '52-Week Low': 3.9271,
+    'Average True Range': 1.58,
+    'EPS growth next year': 7.0142,
+    'Sales growth past 5 years': 0.024,
+    Company: 'Arkansas Best Corporation',
+    Gap: -0.0022,
+    'Relative Volume': 0.73,
+    'Volatility (Month)': 0.0537,
+    'Market Cap': 814.5,
+    Volume: 351906,
+    'Gross Margin': 0.212,
+    'Short Ratio': 5.44,
+    'Performance (Half Year)': 0.8592,
+    'Relative Strength Index (14)': 67.77,
+    'Insider Ownership': 0.034,
+    '20-Day Simple Moving Average': 0.1304,
+    'Performance (Month)': 0.3319,
+    'P/Free Cash Flow': 13.67,
+    'Institutional Transactions': 0.0328,
+    'Performance (Year)': 3.4336,
+    'LT Debt/Equity': 0.2,
+    'Average Volume': 525.42,
+    'EPS growth this year': -2.348,
+    '50-Day Simple Moving Average': 0.1974
+  }
+]
+
+3. Find all stocks with negative growth in 5 years
+  {
+    _id: ObjectId("52853802bb1177ca391c1c36"),
+    Ticker: 'CHT',
+    'Profit Margin': 0.169,
+    'Institutional Ownership': 0.036,
+    'EPS growth past 5 years': 0.01,
+    'Total Debt/Equity': 0.01,
+    'Current Ratio': 1.2,
+    'Return on Assets': 0.085,
+    Sector: 'Technology',
+    'P/S': 3.18,
+    'Change from Open': 0.0003,
+    'Performance (YTD)': 0.0121,
+    'Performance (Week)': -0.0152,
+    'Quick Ratio': 1.2,
+    'P/B': 2.07,
+    'EPS growth quarter over quarter': -0.06,
+    'Payout Ratio': 1.107,
+    'Performance (Quarter)': -0.0102,
+    'Forward P/E': 18.68,
+    'P/E': 18.91,
+    '200-Day Simple Moving Average': 0.0045,
+    'Shares Outstanding': 775.75,
+    'Earnings Date': ISODate("2011-02-24T05:00:00.000Z"),
+    '52-Week High': -0.0531,
+    'P/Cash': 10.73,
+    Change: -0.0048,
+    'Analyst Recom': 3.5,
+    'Volatility (Week)': 0.007,
+    Country: 'Taiwan',
+    'Return on Equity': 0.105,
+    '50-Day Low': 0.0006,
+    Price: 30.86,
+    '50-Day High': -0.0493,
+    'Return on Investment': 0.107,
+    'Shares Float': 474.16,
+    'Dividend Yield': 0.0397,
+    'EPS growth next 5 years': -0.045,
+    Industry: 'Telecom Services - Domestic',
+    Beta: 0.33,
+    'Sales growth quarter over quarter': 0.026,
+    'Operating Margin': 0.211,
+    'EPS (ttm)': 1.64,
+    'Float Short': 0.0069,
+    '52-Week Low': 0.0791,
+    'Average True Range': 0.26,
+    'EPS growth next year': 0.0122,
+    'Sales growth past 5 years': 0.022,
+    Company: 'Chunghwa Telecom Co. Ltd.',
+    Gap: -0.0052,
+    'Relative Volume': 0.81,
+    'Volatility (Month)': 0.0073,
+    'Market Cap': 24055.85,
+    Volume: 165154,
+    'Gross Margin': 0.355,
+    'Short Ratio': 14.61,
+    'Performance (Half Year)': 0.0098,
+    'Relative Strength Index (14)': 33.9,
+    '20-Day Simple Moving Average': -0.0176,
+    'Performance (Month)': -0.0134,
+    'Institutional Transactions': -0.0087,
+    'Performance (Year)': 0.0382,
+    'LT Debt/Equity': 0,
+    'Average Volume': 223.93,
+    'EPS growth this year': -0.142,
+    '50-Day Simple Moving Average': -0.0242
+  }
+]
+Type "it" for more
+
+4. Find all stocks with Profit Margin grater than or equal to 0.06
+  {
+    _id: ObjectId("52853800bb1177ca391c182e"),
+    Ticker: 'ACGL',
+    'Profit Margin': 0.152,
+    'Institutional Ownership': 0.951,
+    'EPS growth past 5 years': 0.014,
+    'Total Debt/Equity': 0.08,
+    'Return on Assets': 0.029,
+    Sector: 'Financial',
+    'P/S': 2.18,
+    'Change from Open': 0.0026,
+    'Performance (YTD)': 0.3278,
+    'Performance (Week)': 0.0026,
+    'Insider Transactions': 0.0391,
+    'P/B': 1.5,
+    'EPS growth quarter over quarter': -0.398,
+    'Payout Ratio': 0,
+    'Performance (Quarter)': 0.087,
+    'Forward P/E': 16.92,
+    'P/E': 14.84,
+    '200-Day Simple Moving Average': 0.1099,
+    'Shares Outstanding': 131.5,
+    'Earnings Date': ISODate("2013-10-28T20:30:00.000Z"),
+    '52-Week High': -0.0103,
+    'P/Cash': 17.62,
+    Change: 0.0041,
+    'Analyst Recom': 2.9,
+    'Volatility (Week)': 0.0107,
+    Country: 'Bermuda',
+    'Return on Equity': 0.108,
+    '50-Day Low': 0.1166,
+    Price: 58.69,
+    '50-Day High': -0.0103,
+    'Return on Investment': 0.113,
+    'Shares Float': 127.79,
+    'EPS growth next 5 years': 0.1049,
+    Industry: 'Property & Casualty Insurance',
+    Beta: 0.55,
+    'Sales growth quarter over quarter': -0.048,
+    'Operating Margin': 0.323,
+    'EPS (ttm)': 3.94,
+    PEG: 1.41,
+    'Float Short': 0.0226,
+    '52-Week Low': 0.3904,
+    'Average True Range': 0.66,
+    'EPS growth next year': -0.1547,
+    'Sales growth past 5 years': 0.002,
+    Company: 'Arch Capital Group Ltd.',
+    Gap: 0.0015,
+    'Relative Volume': 0.22,
+    'Volatility (Month)': 0.0112,
+    'Market Cap': 7685.88,
+    Volume: 67764,
+    'Short Ratio': 8.68,
+    'Performance (Half Year)': 0.0938,
+    'Relative Strength Index (14)': 68.71,
+    'Insider Ownership': 0.018,
+    '20-Day Simple Moving Average': 0.0165,
+    'Performance (Month)': 0.0497,
+    'P/Free Cash Flow': 9.59,
+    'Institutional Transactions': -0.0012,
+    'Performance (Year)': 0.3763,
+    'LT Debt/Equity': 0.08,
+    'Average Volume': 331.9,
+    'EPS growth this year': 0.357,
+    '50-Day Simple Moving Average': 0.0535
+  }
+]
+Type "it" for more
+
+Exercise Part F
+1. Use the $where operator to find all employess who have a salary > 75000
+[  
+  {
+    _id: ObjectId("615266f7662b24dc0fe234bc"),
+    employeeid: 2455,
+    name: 'Syed',
+    salary: 90000
+  }
+]
+
+2. Use the $where operator to find employees where the name contains John
+[  
+  {
+    _id: ObjectId("61526687662b24dc0fe234bb"),
+    employeeid: 1187,
+    name: 'John Steight',
+    salary: 75000
+  },
+  {
+    _id: ObjectId("61526733662b24dc0fe234bd"),
+    employeeid: 24113,
+    name: 'Wright John',
+    salary: 65000
+  }
+]
+
+Exercise Part G
+1. Using one collection from the employee database query all the documents in that collection but return only name and salary.
+[
+  { name: 'Spongebob Squarepants', salary: 70000 },
+  { name: 'John Steight', salary: 75000 },
+  { name: 'Syed', salary: 90000 },
+  { name: 'Wright John', salary: 65000 }
+]

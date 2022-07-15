@@ -1,0 +1,91 @@
+// Andy Luong 1525166
+// I used mongo shell commands to complete the exercises
+Exercise Part A
+1. Create a new database named employees using the use command.
+//use employees database, if not created, it will automatically make one for you
+use employees
+
+2. Use the db.adminCommand() command and report the output./
+//lists current databases
+db.adminCommand( { listDatabases: 1 } );
+
+Exercise Part B 
+1. Create a database named temporary, add a collection named test to it, then drop the database. Report the output before and after dropping the database.
+use temporary 
+//create new collection then drop database
+db.createCollection('test');
+db.dropDatabase()
+
+2. Create multiple collections using distinct department names in the database created in exercise Part A
+//create new collections in employee database
+db.createCollection('IT');
+db.createCollection('Marketing');
+db.createCollection('Finance');
+
+3. List all the collections in the current database
+show collections
+
+Exercise Part C 
+//insert documents in collections
+1. Insert some employee documents with fields(employeeid, name, salary) in the multiple collections created in the previuos exercise.
+db.IT.insert({employeeid: 56, name:"Spongebob Squarepants", salary: 70000})
+db.Marketing.insert({employeeid: 57, name:"Patrick Star", salary:60000})   
+db.Finance.insert({employeeid: 58, name:"Sandy Cheeks", salary: 90000})  
+
+2. Use the find command to retrieve all the entered data.
+//finds documents inside collections
+db.IT.find()
+db.Marketing.find()
+db.Finance.find()
+
+Exercise Part D  
+1. Add the follwoing employees to any collection:
+db.IT.insert({employeeid: 1187, name: "John Steight", salary: 75000}) 
+db.IT.insert({employeeid: 2455, name: "Syed", salary: 90000})
+db.IT.insert({employeeid: 24113, name: "Wright John", salary: 65000})
+
+2. Find 2 documents using the field name employeeid
+db.IT.find({employeeid: 1187})
+db.IT.find({employeeid: 2455})
+
+3. Find 2 documents using the field name name
+db.IT.find({name: "John Steight"})
+db.IT.find({name: "Syed"})  
+
+//use regex to find field starting with John, ^ means it starts with these characters
+4. Find all the documents where the name field starts with John
+db.IT.find({name:{$regex:"^John"}})
+
+//find all documents containing the name John
+5. Find all the documents where the name filed contains John
+db.IT.find({"name": /John/})
+
+//find documents using comparison operators
+Exercise Part E - Working with Real World Data
+//finds query with $lt = less than
+1. Find all stocks with Average Volume less than 100
+db.stocks.find({"Average Volume": {$lt: 100}})
+
+//$eq = exact match
+2. Find stock where Ticker = 'ABFS' using query operator
+db.stocks.find({"Ticker": {$eq: "ABFS"}})
+
+3. Find all stocks with negative growth in 5 years
+db.stocks.find({"EPS growth next 5 years": {$lt: 0}})
+
+4. Find all stocks with Profit Margin grater than or equal to 0.06
+db.stocks.find({"Profit Margin": {$gte: 0.06}})
+
+Exercise Part F
+//must include "this.[field]" when using $where
+1. Use the $where operator to find all employess who have a salary > 75000
+db.IT.find({ $where: "this.salary > 75000" })
+
+//used includes() to find match 
+2. Use the $where operator to find employees where the name contains John
+db.IT.find({ $where: "this.name.includes('John')"})
+
+Exercise Part G
+//have use true/false on all fields 
+1. Using one collection from the employee database query all the documents in that collection but return only name and salary.
+employees> db.IT.find({},{ _id: false, name: true, salary: true})

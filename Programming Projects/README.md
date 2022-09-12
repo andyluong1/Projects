@@ -1,5 +1,6 @@
 1. Appointment Scheduling System
-Full Stack Web Application that allows CRUD functionality that allows users to create, store, and manipulate user data. It allows for clients to sign up for their own appointments and allows employees to manage them. This application was created for a dental office called Smile Architects. 
+
+    Full Stack Web Application that allows CRUD functionality that allows users to create, store, and manipulate user data. It allows for clients to sign up for their own appointments and allows employees to manage them. This application was created for a dental office called Smile Architects. 
 
 2. MongoDB & VueJS Full Stack Web APP
  
